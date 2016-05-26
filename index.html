@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/cybercom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+
+			function stopVideo() {
+				var video = document.querySelector('video');
+				video.pause();
+			}
+
+			function startVideo() {
+				navigator.getUserMedia = navigator.getUserMedia ||
+	                         navigator.webkitGetUserMedia ||
+	                         navigator.mozGetUserMedia;
+
+				if (navigator.getUserMedia) {
+				   navigator.getUserMedia({ audio: false, video: { width: 1280, height: 720 } },
+				      function(stream) {
+				         var video = document.querySelector('video');
+				         video.src = window.URL.createObjectURL(stream);
+				         video.onloadedmetadata = function(e) {
+				           video.play();
+				         };
+				      },
+				      function(err) {}
+				   );
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-separator-notes="^Note:">
+					# AWS IoT Presentation
+					### 2015-06-02
+
+						Tobias Wahlstrom tobias.wahlstrom@cybercom.com
+
+						Younes Abbasi younes.abbasi@cybercom.com
+
+						Oskar Christensson oskar.christensson@cybercom.com
+
+					Note:
+					Here we can write the notes that we need, just add the data-separator-notes attribute on the section..
+				</section>
+				<section>
+					<section data-markdown data-separator-notes="^Note:">
+						## Agenda
+						- What is the Cloud?
+						- Managed services
+						- AWS IoT
+						- Demo
+
+						Note:
+						Any notes on the agenda?
+					</section>
+				</section>
+				<section>
+					<section data-markdown data-separator-notes="^Note:">
+							## What is the Cloud?
+
+							Note:
+							I don't know, should we discuss Traditional IT vs. Cloud?
+							Upfront costs? How to handle seasonal increase in traffic?
+					</section>
+					<section data-markdown>
+							- Traditional IT vs. Cloud
+					</section>
+					<section data-markdown>
+							Pets and Cattle
+
+							> Pets are given names, Cattle are given numbers
+
+							> Pets are unique, Cattle are almost identical to other cattle
+
+							> Pets are nursed when ill, Cattle are replaced
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+							## Managed services
+					</section>
+					<section data-markdown data-separator-notes="^Note:">
+							- IaaS, PaaS, SaaS, XaaS
+							 	- Stop caring about updating, managing, allocating resources
+
+							Note:
+							Infrastructure as a service
+							Platform as a service
+							Software as a service
+							Anything as a service
+					</section>
+					<section data-markdown>
+							### IaaS
+							- AWS (Amazon)
+							- Azure (Microsoft)
+							- Google Cloud Platform (Google)
+					</section>
+					<section data-markdown>
+							### PaaS
+							- DynamoDB
+					</section>
+					<section data-markdown>
+							### SaaS
+							- JIRA
+							- AWS Console
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+							## AWS IoT
+					</section>
+					<section data-markdown>
+							### AWS IoT
+
+							Announced 2015-10-08
+
+							Publicly available 2015-12-18
+
+							> _AWS IoT is a platform that enables you to connect devices
+							to AWS Services and other devices, secure data and interactions,
+							process and act upon device data, and enable applications to
+							interact with devices even when they are offline._
+					</section>
+					<section>
+						<h3>AWS IoT</h3>
+						<img src="../img/awsiot.png"/>
+						<small>Property of Amazon Web Services</small>
+						<aside class="notes" data-markdown>
+							Device Shadow: Handle device state
+
+							Rules engine: Identify and act on events
+
+							Authentication & Authorization: Certificates!
+
+							Device SDK: "Intelligent devices"
+						</aside>
+					</section>
+					<section data-markdown>
+							- Sweetspot
+							- Authentication & Authorization
+							- What's missing?
+					</section>
+					<section data-markdown>
+							### AWS IoT
+							#### Sweetspot
+					</section>
+					<section data-markdown>
+							### AWS IoT
+							#### Authentication & Authorization
+					</section>
+					<section data-markdown>
+							### AWS IoT
+							#### What's missing?
+
+							- Complex products
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						# DEMO!!
+					</section>
+				</section>
+				<section onclick="startVideo()" ondblclick="stopVideo()">
+					<video></video>
+				</section>
+				<section data-markdown>
+					## Thank you!
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
